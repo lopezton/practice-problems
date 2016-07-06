@@ -1,0 +1,20 @@
+[
+    {
+        "name": "easy",
+        "problems": [
+            "sample"
+        ]
+    },
+    {
+        "name": "medium",
+        "problems": [
+
+        ]
+    },
+    {
+        "name": "hard",
+        "problems": [
+
+        ]
+    }
+]
