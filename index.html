@@ -88,17 +88,34 @@
 			</div>
 		</div>
 
-		<div class="row" ng-controller="problemCategoryCtrl">
+		<div class="row" ng-controller="problemsCtrl">
 			<uib-tabset id="problems-tabs" active="activeJustified" justified="true">
-				<uib-tab ng-repeat="problemCategory in problemCategories" heading="{{problemCategory.name}}">
 
-					<div class="row" ng-controller="problemsCtrl" ng-init="init(problemCategory.name)">
-						<div class="col-md-4 portfolio-item" ng-repeat="problem in activeProblems">
+				<uib-tab heading="all">
+
+					<div class="row">
+						<div class="col-md-4 portfolio-item" ng-repeat="problem in allProblems">
 							<a href="#">
 								<img class="img-responsive" ng-src="{{problem.thumbnailUrl}}" alt="">
 							</a>
 							<h3>
-								<a href="#">{{problem.name}}</a>
+								<a href="#">{{problem.title}}</a>
+							</h3>
+							<p>{{problem.description}}</p>
+						</div>
+					</div>
+
+				</uib-tab>
+
+				<uib-tab ng-repeat="(category, problems) in problemsByCategory" heading="{{category}}">
+
+					<div class="row">
+						<div class="col-md-4 portfolio-item" ng-repeat="problem in problems">
+							<a href="#">
+								<img class="img-responsive" ng-src="{{problem.thumbnailUrl}}" alt="">
+							</a>
+							<h3>
+								<a href="#">{{problem.title}}</a>
 							</h3>
 							<p>{{problem.description}}</p>
 						</div>
@@ -110,43 +127,11 @@
 
 		<hr>
 
-		<!-- Pagination
-		<div class="row text-center">
-			<div class="col-lg-12">
-				<ul class="pagination">
-					<li>
-						<a href="#">&laquo;</a>
-					</li>
-					<li class="active">
-						<a href="#">1</a>
-					</li>
-					<li>
-						<a href="#">2</a>
-					</li>
-					<li>
-						<a href="#">3</a>
-					</li>
-					<li>
-						<a href="#">4</a>
-					</li>
-					<li>
-						<a href="#">5</a>
-					</li>
-					<li>
-						<a href="#">&raquo;</a>
-					</li>
-				</ul>
-			</div>
-		</div>
-		<!-- /.row -->
-
-		<hr>
-
 		<!-- Footer -->
 		<footer>
 			<div class="row">
 				<div class="col-lg-12">
-					<p>Copyright &copy; Your Website 2016</p>
+					<p>Copyright &copy; Practice Problems 2016</p>
 				</div>
 			</div>
 			<!-- /.row -->
@@ -161,7 +146,6 @@
 	<script src="app.js"></script>
 
 	<script src="controllers/ProblemsController.js"></script>
-	<script src="controllers/ProblemCategoryController.js"></script>
 
 	<script src="services/ProblemService.js"></script>
 </body>
